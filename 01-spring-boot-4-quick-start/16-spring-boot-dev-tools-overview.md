@@ -33,7 +33,7 @@ IntelliJ Community Edition does not support DevTools by default:
 Additional setting
 
 - Select: Preferences > Advanced Settings
-- Check box: Allow auto-make to ...
+- Check box: Allow auto-make to start even if developed application is currently running
 
 ### Development Process
 
