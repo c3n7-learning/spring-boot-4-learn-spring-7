@@ -39,7 +39,7 @@ public interface StudentDAO {
 
 ### Step 2: Define DAO implementation
 
-![dao impl](media/76-1-dao-impl.png)
+![dao impl](media/76-1-dao-impl.webp)
 
 ### Step 3: Update main app
 
