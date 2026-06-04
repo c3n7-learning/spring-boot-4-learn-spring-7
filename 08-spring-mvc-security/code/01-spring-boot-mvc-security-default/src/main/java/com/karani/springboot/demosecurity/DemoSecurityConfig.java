@@ -2,9 +2,11 @@ package com.karani.springboot.demosecurity;
 
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.core.userdetails.User;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.provisioning.InMemoryUserDetailsManager;
+import org.springframework.security.web.SecurityFilterChain;
 
 @Configuration
 public class DemoSecurityConfig {
@@ -29,5 +31,21 @@ public class DemoSecurityConfig {
                 .build();
 
         return new InMemoryUserDetailsManager(john, mary, susan);
+    }
+
+    @Bean
+    public SecurityFilterChain filterChain(HttpSecurity http) throws Exception {
+        http.authorizeHttpRequests(configurer ->
+                        configurer
+                                .anyRequest().authenticated() // Any request to the app must be authenticated
+                )
+                .formLogin(form ->
+                        form
+                                .loginPage("/showMyLoginPage") // Show our custom form at this request mapping
+                                .loginProcessingUrl("/authenticateTheUser") // Login form should POST data to this URL
+                                .permitAll() // Allow everyone to see login page. No need to be logged in
+                );
+
+        return http.build();
     }
 }
