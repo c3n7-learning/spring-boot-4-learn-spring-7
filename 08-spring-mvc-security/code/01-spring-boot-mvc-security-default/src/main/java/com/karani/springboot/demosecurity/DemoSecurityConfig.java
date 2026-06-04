@@ -44,7 +44,8 @@ public class DemoSecurityConfig {
                                 .loginPage("/showMyLoginPage") // Show our custom form at this request mapping
                                 .loginProcessingUrl("/authenticateTheUser") // Login form should POST data to this URL
                                 .permitAll() // Allow everyone to see login page. No need to be logged in
-                );
+                )
+                .logout(logout -> logout.permitAll()); // Adds logout support
 
         return http.build();
     }
