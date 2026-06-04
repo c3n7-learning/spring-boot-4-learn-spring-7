@@ -1,5 +1,6 @@
 <!DOCTYPE html>
-<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<html lang="en" xmlns:th="http://www.thymeleaf.org"
+      xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
 <head>
     <meta charset="UTF-8">
     <title>Karani Inc Home Page</title>
@@ -10,6 +11,18 @@
     <p>
         Welcome to the Karani Inc home page!
     </p>
+
+    <hr/>
+
+    <!-- display user name and role -->
+    <p>
+        User: <span sec:authentication="principal.username"></span>
+        <br/><br/>
+        <!-- by default, spring prefixes the roles with `ROLE_` -->
+        Role(s): <span sec:authentication="principal.authorities"></span>
+    </p>
+
+    <hr/>
 
     <form action="#" th:action="@{/logout}" method="POST">
 
