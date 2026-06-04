@@ -48,7 +48,11 @@ public class DemoSecurityConfig {
                                 .loginProcessingUrl("/authenticateTheUser") // Login form should POST data to this URL
                                 .permitAll() // Allow everyone to see login page. No need to be logged in
                 )
-                .logout(logout -> logout.permitAll()); // Adds logout support
+                .logout(logout -> logout.permitAll()) // Adds logout support
+                .exceptionHandling(configurer ->
+                        configurer.accessDeniedPage("/access-denied")
+                )
+        ;
 
         return http.build();
     }
