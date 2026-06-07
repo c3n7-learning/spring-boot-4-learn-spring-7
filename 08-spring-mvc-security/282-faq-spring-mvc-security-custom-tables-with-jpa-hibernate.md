@@ -1,5 +1,7 @@
 # FAQ: Spring MVC Security - Custom Tables with JPA/Hibernate
 
+Hands On: `08-spring-mvc-security/code/03-spring-mvc-security-jpa-hibernate-bcrypt`
+
 ## Introduction
 
 In this tutorial, you will learn how to secure a Spring MVC web app with Spring Security using JPA/Hibernate.
