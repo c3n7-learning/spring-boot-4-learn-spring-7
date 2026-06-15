@@ -1,7 +1,10 @@
 package com.karani.cruddemo.dao;
 
+import com.karani.cruddemo.entity.Course;
 import com.karani.cruddemo.entity.Instructor;
 import com.karani.cruddemo.entity.InstructorDetail;
+
+import java.util.List;
 
 public interface AppDAO {
 
@@ -14,4 +17,6 @@ public interface AppDAO {
     InstructorDetail findInstructorDetailById(int theId);
 
     void deleteInstructorDetailById(int theId);
+
+    List<Course> findCoursesByInstructorId(int theId);
 }
