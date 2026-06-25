@@ -2,8 +2,11 @@ package com.karani.cruddemo.entity;
 
 import jakarta.persistence.*;
 
+import java.util.ArrayList;
+import java.util.List;
+
 @Entity
-@Table(name="student")
+@Table(name = "student")
 public class Student {
 
     @Id
@@ -19,6 +22,12 @@ public class Student {
 
     @Column(name = "email")
     private String email;
+
+    @ManyToMany(
+            fetch = FetchType.LAZY,
+            cascade = {CascadeType.PERSIST, CascadeType.MERGE, CascadeType.DETACH, CascadeType.REFRESH},
+            mappedBy = "students")
+    private List<Course> courses;
 
     public Student() {
 
@@ -60,6 +69,24 @@ public class Student {
 
     public void setEmail(String email) {
         this.email = email;
+    }
+
+    public List<Course> getCourses() {
+        return courses;
+    }
+
+    public void setCourses(List<Course> courses) {
+        this.courses = courses;
+    }
+
+    public void addCourse(Course theCourse) {
+        if (courses == null) {
+            courses = new ArrayList<>();
+        }
+
+        // Lets hibernate configures the relationship in both directions
+        courses.add(theCourse);
+        theCourse.addStudent(this);
     }
 
     @Override
