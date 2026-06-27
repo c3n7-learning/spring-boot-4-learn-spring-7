@@ -1,6 +1,7 @@
 package com.karani.aopdemo;
 
 import com.karani.aopdemo.dao.AccountDAO;
+import com.karani.aopdemo.dao.MembershipDAO;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
@@ -14,19 +15,18 @@ public class AopdemoApplication {
 	}
 
     @Bean // spring boot will automatically inject the AccountDAO dependency because of the @Bean annotation
-    public CommandLineRunner commandLineRunner(AccountDAO theAccountDAO) {
+    public CommandLineRunner commandLineRunner(AccountDAO theAccountDAO, MembershipDAO theMembershipDAO) {
         return runner -> {
-            demoTheBeforeAdvice(theAccountDAO);
+            demoTheBeforeAdvice(theAccountDAO, theMembershipDAO);
         };
     }
 
-    private void demoTheBeforeAdvice(AccountDAO theAccountDAO) {
+    private void demoTheBeforeAdvice(AccountDAO theAccountDAO, MembershipDAO theMembershipDAO) {
         // call the business method
         theAccountDAO.addAccount();
 
-        // do it again
-        System.out.println("\nlet's call it again!\n");
-        theAccountDAO.addAccount();
+        // call the membership business method
+        theMembershipDAO.addAccount();
     }
 
 }
