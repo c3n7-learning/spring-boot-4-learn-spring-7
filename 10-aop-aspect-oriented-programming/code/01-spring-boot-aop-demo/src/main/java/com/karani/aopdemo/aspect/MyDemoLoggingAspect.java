@@ -15,7 +15,10 @@ public class MyDemoLoggingAspect {
     // @Before("execution(public void com.karani.aopdemo.dao.AccountDAO.addSillyMember())")
 
     // Match any `add*` Method
-    @Before("execution(public void add*())")
+    // @Before("execution(public void add*())")
+
+    //  Match any Return Type
+    @Before("execution(* add*())")
     public void beforeAddAccountAdvice() {
         System.out.println("\n======>>> Executing @Before advice on method");
     }
