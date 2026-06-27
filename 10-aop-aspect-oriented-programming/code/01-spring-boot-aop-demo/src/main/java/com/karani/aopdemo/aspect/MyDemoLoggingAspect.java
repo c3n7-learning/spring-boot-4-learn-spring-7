@@ -8,12 +8,15 @@ import org.springframework.stereotype.Component;
 @Component
 public class MyDemoLoggingAspect {
 
-    // Match any addAccount() Method
-    // @Before("execution(public void addAccount())")
+    // Match any addSillyMember() Method
+    // @Before("execution(public void addSillyMember())")
 
-    // Match only AccountDAO.addAccount
-    @Before("execution(public void com.karani.aopdemo.dao.AccountDAO.addAccount())")
+    // Match only AccountDAO.addSillyMember
+    // @Before("execution(public void com.karani.aopdemo.dao.AccountDAO.addSillyMember())")
+
+    // Match any `add*` Method
+    @Before("execution(public void add*())")
     public void beforeAddAccountAdvice() {
-        System.out.println("\n======>>> Executing @Before on addAccount()");
+        System.out.println("\n======>>> Executing @Before advice on method");
     }
 }
