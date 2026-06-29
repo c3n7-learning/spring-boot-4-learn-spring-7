@@ -18,6 +18,11 @@ public class MyDemoLoggingAspect {
         System.out.println("\n======>>> Executing @Before advice on method");
     }
 
+    @Before("forDaoPackage()")
+    public void performApiAnalytics() {
+        System.out.println("======>>> Performing API analytics");
+    }
+
     // Match any addSillyMember() Method
     // @Before("execution(public void addSillyMember())")
 
