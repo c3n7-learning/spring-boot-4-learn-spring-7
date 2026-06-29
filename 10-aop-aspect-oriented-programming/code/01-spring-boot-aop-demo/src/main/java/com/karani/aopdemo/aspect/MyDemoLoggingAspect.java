@@ -27,7 +27,10 @@ public class MyDemoLoggingAspect {
     // @Before("execution(* add*(com.karani.aopdemo.Account, ..))")
 
     // Match Method with Any Params
-    @Before("execution(* add*(..))")
+    // @Before("execution(* add*(..))")
+
+    // Match Any Method in a Package
+    @Before("execution(* com.karani.aopdemo.dao.*.*(..))")
     public void beforeAddAccountAdvice() {
         System.out.println("\n======>>> Executing @Before advice on method");
     }
