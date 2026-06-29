@@ -1,5 +1,7 @@
 package com.karani.aopdemo.dao;
 
+import com.karani.aopdemo.Account;
+
 public interface AccountDAO {
-    void addAccount();
+    void addAccount(Account theAccount);
 }

@@ -18,7 +18,10 @@ public class MyDemoLoggingAspect {
     // @Before("execution(public void add*())")
 
     //  Match any Return Type
-    @Before("execution(* add*())")
+    // @Before("execution(* add*())")
+
+    // Match on a specific param
+    @Before("execution(* add*(com.karani.aopdemo.Account))")
     public void beforeAddAccountAdvice() {
         System.out.println("\n======>>> Executing @Before advice on method");
     }
